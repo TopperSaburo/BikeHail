@@ -1,33 +1,31 @@
-<!doctype html>
-<html lang="en">
+<html>
   <head>
-    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
-    <style>
-      .map {
-        height: 400px;
-        width: 100%;
-      }
-    </style>
-    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-    <title>OpenLayers example</title>
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"
+  type="text/javascript" charset="utf-8"></script>
+  <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
+  type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    <h2>My Map</h2>
-    <div id="map" class="map"></div>
-    <script type="text/javascript">
-    //At this moment all the code above and below here sourced from: https://openlayers.org/en/latest/doc/quickstart.html 
-      var map = new ol.Map({
-        target: 'map',
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        view: new ol.View({
-          center: ol.proj.fromLonLat([37.41, 8.82]),
-          zoom: 4
-        })
-      });
-    </script>
+  <div style="width: 640px; height: 480px" id="mapContainer"></div>
+  <script>
+    // Initialize the platform object:
+    var platform = new H.service.Platform({
+    'app_id': '{YOUR_APP_ID}',
+    'app_code': '{YOUR_APP_CODE}'
+    });
+
+    // Obtain the default map types from the platform object
+    var maptypes = platform.createDefaultLayers();
+
+    // Instantiate (and display) a map object:
+    var map = new H.Map(
+    document.getElementById('mapContainer'),
+    maptypes.normal.map,
+    {
+      zoom: 10,
+      center: { lng: 13.4, lat: 52.51 }
+    });
+  </script>
   </body>
 </html>
