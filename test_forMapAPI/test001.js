@@ -4,7 +4,7 @@ let platform = new H.service.Platform({
 })
 let defaultLayers = platform.createDefaultLayers();
 let map = new H.Map(
-    document.getElementById("map");
+    document.getElementById("map"),
     defaultLayers.normal.map,
     {
         zoom:10,
