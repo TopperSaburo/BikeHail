@@ -4,5 +4,13 @@ let platform = new H.service.Platform({
 })
 let defaultLayers = platform.createDefaultLayers();
 let map = new H.Map(
-    document.getElementById
+    document.getElementById("map");
+    defaultLayers.normal.map,
+    {
+        zoom:10,
+        center:{
+            lat:52.5,
+            ing:13.4
+        }
+    }
 )
