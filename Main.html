@@ -26,6 +26,17 @@
       zoom: 10,
       center: { lng: 13.4, lat: 52.51 }
     });
+
+///// UI toggles
+var mapSettings = ui.getControl('mapsettings');
+var zoom = ui.getControl('zoom');
+var scalebar = ui.getControl('scalebar');
+var panorama = ui.getControl('panorama');
+
+panorama.setAlignment('top-left');
+mapSettings.setAlignment('top-left');
+zoom.setAlignment('top-left');
+scalebar.setAlignment('top-left');
   </script>
   </body>
 </html>
