@@ -9,10 +9,11 @@
   <body>
   <div style="width: 640px; height: 480px" id="mapContainer"></div>
   <script>
+    //We might start wanting to work on platforming. 
     // Initialize the platform object:
     var platform = new H.service.Platform({
-    'app_id': '{YOUR_APP_ID}',
-    'app_code': '{YOUR_APP_CODE}'
+    "app_id":"iyo4JfGPiGiUwO7Jwkei",
+    "app_code":"pmt_9cbTvp15TTYMhDOB-w"
     });
 
     // Obtain the default map types from the platform object
@@ -26,17 +27,6 @@
       zoom: 10,
       center: { lng: 13.4, lat: 52.51 }
     });
-
-///// UI toggles
-var mapSettings = ui.getControl('mapsettings');
-var zoom = ui.getControl('zoom');
-var scalebar = ui.getControl('scalebar');
-var panorama = ui.getControl('panorama');
-
-panorama.setAlignment('top-left');
-mapSettings.setAlignment('top-left');
-zoom.setAlignment('top-left');
-scalebar.setAlignment('top-left');
   </script>
   </body>
 </html>
