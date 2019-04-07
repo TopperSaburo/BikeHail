@@ -9,10 +9,22 @@
 
 </head>
 <body>
+  <div>
   <Button id="longitude" onclick="Longitude()">Longitude</Button>
   <Button id="latitude"  onclick="Latitude()">Latitude</Button>
-  <Button id="send" onclick="send()">Go!</Button>
+  <Button id="send" onclick="moveMapToSF(map)">Go!</Button>
   <div id="map" style="width: 100%; height: 400px; background: grey" />
+  </div>
+  <Button id="Brasilia" onclick="moveMapToBrazil(map)">Brasilia</Button>
+  <Button id="Dublin" onclick="moveMapToBerlin(map)">Berlin</Button>
+  <Button id="Beijing" onclick="moveMapToBeijing(map)">Beijing</Button>
+  <Button id="London" onclick="moveMapToLondon(map)">London</Button>
+  <Button id="New Delhi" onclick="moveMapToNewDelhi(map)">New Delhi</Button>
+  <Button id="New York" onclick="moveMapToNewYork(map)">New York</Button>
+  <Button id="Paris" onclick="moveMapToParis(map)">Paris</Button>
+  <Button id="San Fransisco" onclick="moveMapToSF(map)">San Fransisco</Button>
+  <Button id="Santa Clara" onclick="moveMapToSantaClara(map)">Santa Clara</Button>
+  <Button id="Tokyo" onClick="moveMapToTokyo(map)">Tokyo</Button>
   <script  type="text/javascript" charset="UTF-8" >
 
  var x, y; 
@@ -31,6 +43,47 @@ function moveMapToBerlin(map){
   map.setZoom(10);
 }
 
+function moveMapToSF(map){
+  map.setZoom(12);
+  map.setCenter({lat: 37.773972, lng:-122.431297});
+}
+
+function moveMapToTokyo(map){
+  map.setZoom(10);
+  map.setCenter({lat: 35.6762, lng:139.6503}); 
+}
+
+function moveMapToBeijing(map){
+  map.setZoom(10);
+  map.setCenter({lat: 39.913818, lng:116.363625}); 
+}
+
+function moveMapToSantaClara(map){
+  map.setZoom(14);
+  map.setCenter({lat: 37.3541,lng:-121.9552}); 
+}
+
+function moveMapToNewYork(map){
+  map.setZoom(10);
+  map.setCenter({lat:40.730610,lng:-73.935242})
+}
+function moveMapToLondon(map){
+  map.setZoom(10);
+  map.setCenter({lat:51.5074,lng:-0.1278})
+}
+function moveMapToNewDelhi(map){
+  map.setZoom(10);
+  map.setCenter({lat:28.644800,lng:77.2090})
+}
+function moveMapToParis(map){
+  map.setZoom(10);
+  map.setCenter({lat:48.8566,lng:2.3522})
+}
+function moveMapToBrazil(map){
+  map.setZoom(10);
+  map.setCenter({lat:-15.8267,lng:-47.9218})
+}
+
 function send(map){
   alert(x); 
   alert(y);
@@ -38,14 +91,6 @@ function send(map){
   map.setCenter(new H.geo.lat({lat: x}, {lng: y})); 
   map.setZoom(10);
 }
-
-/**
- * Boilerplate map initialization code starts below:
- */
-
-//Step 1: initialize communication with the platform
-
-var container = new H.map.Group(); 
 
 var platform = new H.service.Platform({
   app_id: 'devportal-demo-20180625',
@@ -71,16 +116,10 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 // Create the default UI components
 var ui = H.ui.UI.createDefault(map, defaultLayers);
 
-container.addEventListener('mousedown', function (evt) {
-    // Now lets log the event
-    customLog(evt.target.getData());
+map.addEventListener('mousedown', function (evt) {
+    moveMapToBerlin(map); 
   });
-  // Let's zoom to our objects by default
-  map.setViewBounds(container.getBounds());
-  // Make objects visible by adding them to the map
-  map.addObject(container);
 
-// Now use the map as required...
 moveMapToBerlin(map);
 
   </script>
