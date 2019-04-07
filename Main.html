@@ -7,17 +7,20 @@
   type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-<<<<<<< HEAD
+
     <button type="button"></button>
     <button type="button"></button>
-=======
+
       <button onclick="Destination()">Destination</button>
-      <button onclick="Longitude()">Longitude</button>
-      <button onclick="Latitude()">Latitude</button>
+      <button onclick="LongitudeD()">Longitude</button>
+      <button onclick="LatitudeD()">Latitude</button>
+      <button onclick="CurrentLocation()">CurrentLocation</button>
+      <button onclick="LongitudeC()">LongitudeC</button>
+      <button onclick="LatitudeC()">LatitudeC</button>
       <p id="demo"></p>
 
 
->>>>>>> b43866b45c4c4054d4ca88315ebc78b6f61636e6
+
   <div style="width: 640px; height: 480px" id="mapContainer"></div>
   <script>
 
@@ -55,22 +58,58 @@ function Destination() {
     "Hello " + person + "! How are you today?";
   }
 }
-function Longitude() {
-var longitude = prompt("longitude", "20.0");
-  if (longitude != null){
+function LongitudeD() {
+var long2 = prompt("longitude", "20.0");
+  if (long2!= null){
     document.getElementByID("demo").innerHTML = 
     "Hello " + person + "! How are you today?";
   }
 }
 
-function Latitude() {
-var latitude = prompt("latitude", "35.8");
-  if (latitude != null){
+function LatitudeD() {
+var lat2 = prompt("latitude", "35.8");
+  if (lat2 != null){
+    document.getElementByID("demo").innerHTML = 
+    "Hello " + person + "! How are you today?";
+  }
+}
+function LongitudeC() {
+var lat1 = prompt("longitude", "35.8");
+  if (lat1 != null){
+    document.getElementByID("demo").innerHTML = 
+    "Hello " + person + "! How are you today?";
+  }
+}
+function LatitudeC() {
+var lat1 = prompt("latitude", "35.8");
+  if (lat1 != null){
     document.getElementByID("demo").innerHTML = 
     "Hello " + person + "! How are you today?";
   }
 }
 
+///////////////////////////////////////////////////////////
+function distance(lat1, lon1, lat2, lon2, unit) {
+	if ((lat1 == lat2) && (lon1 == lon2)) {
+		return 0;
+	}
+	else {
+		var radlat1 = Math.PI * lat1/180;
+		var radlat2 = Math.PI * lat2/180;
+		var theta = lon1-lon2;
+		var radtheta = Math.PI * theta/180;
+		var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+		if (dist > 1) {
+			dist = 1;
+		}
+		dist = Math.acos(dist);
+		dist = dist * 180/Math.PI;
+		dist = dist * 60 * 1.1515;
+		if (unit=="K") { dist = dist * 1.609344 }
+		if (unit=="N") { dist = dist * 0.8684 }
+		return dist;
+	}
+}
 ///////////////////////////////////////////////////////////
 // Create the parameters for the routing request:
 var routingParameters = {
