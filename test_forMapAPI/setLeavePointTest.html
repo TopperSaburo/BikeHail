@@ -1,0 +1,31 @@
+<html>
+        <head>
+            <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+            <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyCNqCgkvZr6rGMkUvXDIwhu6ezY9lC8GuQ",
+                authDomain: "bike-hailing-app.firebaseapp.com",
+                databaseURL: "https://bike-hailing-app.firebaseio.com",
+                projectId: "bike-hailing-app",
+                storageBucket: "bike-hailing-app.appspot.com",
+                messagingSenderId: "717536999498"
+            };
+            firebase.initializeApp(config);
+            </script>
+            <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+            <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+        </head>
+        <body>
+        <script>
+            let setLeavePoint = () =>{
+                let leavepoint;
+                navigator.geolocation.getCurrentPosition(position=>{leavepoint=[position.coords.latitude,position.coords.longitude]}, onError);
+                
+                return leavepoint;
+            }
+            //navigator.geolocation.getCurrentPosition(onSuccess, onError);    
+        </script>
+
+        </body>
+</html>
