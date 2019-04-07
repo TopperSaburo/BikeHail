@@ -12,12 +12,12 @@
     <button type="button"></button>
 
       <button onclick="Destination()">Destination</button>
-      <button onclick="LongitudeD()">Longitude</button>
-      <button onclick="LatitudeD()">Latitude</button>
+      <button id="longitudeD" onclick="LongitudeD()">Longitude</button>
+      <button id="latitudeD" onclick="LatitudeD()">Latitude</button>
       <button onclick="CurrentLocation()">CurrentLocation</button>
-      <button onclick="LongitudeC()">LongitudeC</button>
-      <button onclick="LatitudeC()">LatitudeC</button>
-      <p id="demo"></p>
+      <button id="longitudeC" onclick="LongitudeC()">LongitudeC</button>
+      <button id="latitudeC" onclick="LatitudeC()">LatitudeC</button>
+      
 
 
 
@@ -53,41 +53,29 @@ var map = new H.Map(
 
 function Destination() {
   var destination = prompt("Please enter desired destination", "Cupertino");
-  if (destination != null){
-    document.getElementByID("demo").innerHTML =
-    "Hello " + person + "! How are you today?";
-  }
 }
 function LongitudeD() {
-var long2 = prompt("longitude", "20.0");
-  if (long2!= null){
-    document.getElementByID("demo").innerHTML = 
-    "Hello " + person + "! How are you today?";
-  }
+var lon2 = prompt("destination longitude", "20.0");
+document.getElementById("longitudeD").setAttribute("isCLicked",true); 
 }
 
 function LatitudeD() {
-var lat2 = prompt("latitude", "35.8");
-  if (lat2 != null){
-    document.getElementByID("demo").innerHTML = 
-    "Hello " + person + "! How are you today?";
-  }
+var lat2 = prompt("destination latitude", "35.8");
+document.getElementById("latitudeD").setAttribute("isCLicked",true); 
+alert(lat2);
 }
 function LongitudeC() {
-var lat1 = prompt("longitude", "35.8");
-  if (lat1 != null){
-    document.getElementByID("demo").innerHTML = 
-    "Hello " + person + "! How are you today?";
-  }
+var lon1 = prompt("current longitude", "35.8");
+document.getElementById("longitudeC").setAttribute("isCLicked",true); 
+console.log(lon1);
 }
 function LatitudeC() {
-var lat1 = prompt("latitude", "35.8");
-  if (lat1 != null){
-    document.getElementByID("demo").innerHTML = 
-    "Hello " + person + "! How are you today?";
-  }
+var lat1 = prompt("current latitude", "35.8");
+document.getElementById("latitudeC").setAttribute("isCLicked",true); 
 }
-
+if(document.getElementById("latitudeC").getAttribute("isClicked")){
+  distance;
+}
 ///////////////////////////////////////////////////////////
 function distance(lat1, lon1, lat2, lon2, unit) {
 	if ((lat1 == lat2) && (lon1 == lon2)) {
@@ -106,8 +94,9 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 		dist = dist * 180/Math.PI;
 		dist = dist * 60 * 1.1515;
 		if (unit=="K") { dist = dist * 1.609344 }
-		if (unit=="N") { dist = dist * 0.8684 }
-		return dist;
+    if (unit=="N") { dist = dist * 0.8684 }
+    window.alert(dist);
+    return dist;
 	}
 }
 ///////////////////////////////////////////////////////////
@@ -188,7 +177,7 @@ router.calculateRoute(routingParameters, onResult,
     alert(error.message);
   });
 
-  map.moveToSF()
+//  map.moveToSF()
 
   </script>
   </body>
