@@ -1,5 +1,6 @@
 <html>
         <head>
+            <script src="/__/firebase/5.9.3/firebase-app.js"></script>
             <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
             <script>
             // Initialize Firebase
@@ -11,7 +12,7 @@
                 storageBucket: "bike-hailing-app.appspot.com",
                 messagingSenderId: "717536999498"
             };
-            firebase.initializeApp(config);
+            let db = firebase.initializeApp(config);
             </script>
             <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
             <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
