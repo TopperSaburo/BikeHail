@@ -15,38 +15,79 @@
             </script>
             <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
             <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+            <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"
+  type="text/javascript" charset="utf-8"></script>
+  <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
+  type="text/javascript" charset="utf-8"></script>
         </head>
         <body>
+            <div id="mapContainer"></div>
         <script>
-            
+            var platform = new H.service.Platform({
+                "app_id":"iyo4JfGPiGiUwO7Jwkei",
+                "app_code":"pmt_9cbTvp15TTYMhDOB-w"
+            });
+            // Retrieve the target element for the map:
+            var targetElement = document.getElementById('mapContainer');
+
+            // Get the default map types from the platform object:
+            var defaultLayers = platform.createDefaultLayers();
+
+            // Instantiate the map:
+            var map = new H.Map(
+            document.getElementById('mapContainer'),
+            defaultLayers.normal.map,
+            {
+                zoom: 10,
+                center: { lat: 52.51, lng: 13.4 }
+            });
             let checkClicked = (buttonElement) =>{
                 
                 buttonElement.onclick = () =>{
                     return true;
                 }
             }
+            function onError(error) {
+                alert('code: '    + error.code    + '\n' +
+                    'message: ' + error.message + '\n');
+            }
             let setLeavePoint =  (map) =>{
+                const pixelProjection = new H.geo.PixelProjection();
                 let setbtn = document.createElement("button");
-                map.appendChild(setbtn);
+                map.addObject(setbtn);
 
                 //setbtn.
                 //coords = {lat: 52.53075, lng: 13.3851}
                 //let leavepoint;
                 navigator.geolocation.getCurrentPosition(position=>{coords = {lat:position.coords.latitude, lng: position.coords.longitude}}, onError);
-                let pointMark = new H.map.Marker(coords, {icon: new H.map.Icon(svgMarkup)});
+                //in the <
+                let pointMark = new H.map.DomMarker(coords, {icon: new H.map.DomIcon("<img>")});
+                
                 map.addObject(pointMark);
+                
                 map.setCenter(coords);
+                let grabbing = false;
+                
                 while(true){
-                    if(brabbing){
-
-                    }
+                    pointMark.onmousedown = () =>{grabbing=true;}
+                    
+                    pointMark.onmousedown = () =>{grabbing=false;}
+                    //when user grabs the mark, mark should move with mouse-cursor
+                    pointMark.onmousemove = () =>{if(grabbing)true}
+                    
                     if(checkClicked(setbtn))break;
                 }
+                
+                map.removeChild(setbtn);
+                //plz make the below
+                coords=pixelProjectionxyToGeo(xxxxxx,yyyyyy);
                 return coords;
             }
+            console.log(setLeavePoint(map));
+            //how you use this func:
             //let pos = setLeavePoint()
             //pos[lat] :it is latitude
-            //navigator.geolocation.getCurrentPosition(onSuccess, onError);    
+                
         </script>
 
         </body>
