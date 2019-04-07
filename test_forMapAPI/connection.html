@@ -8,7 +8,13 @@ let getDriverData = () =>{
     }
     return ava_dr;
 }
+
 let showDriverIndex=(drivers)=>{
-    
+    driverIndex=[];
+    for(let x=0;x<drivers.length;x++){
+        driverIndex[x]=document.createElement("div");
+        driverIndex[x].innerText+=`evaluation rate:${drivers[x].ev_rate}`;
+        
+    }
 }
 </script>
