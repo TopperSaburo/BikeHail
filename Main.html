@@ -7,6 +7,12 @@
   type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
+// creates button for user to input destination
+      <button onclick="myFunction()">Destination</button>
+
+      <p id="demo"></p>
+
+
   <div style="width: 640px; height: 480px" id="mapContainer"></div>
   <script>
     // Instantiate a map and platform object:
@@ -29,6 +35,8 @@ var map = new H.Map(
   center: { lat: 52.51, lng: 13.4 }
   });
 ////////////////////////////////////////////////
+// connects to button
+
 function myFunction() {
   var destination = prompt("Please enter desired destination", "Cupertino");
   if (destination != null){
