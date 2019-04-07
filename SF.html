@@ -2,6 +2,14 @@
 <head>
 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
+<style>
+  .towns{
+    margin-top:20px;
+  }
+  .top{
+    margin-bottom: 20px;
+  }
+</style>
 <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
 <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
 <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
@@ -10,21 +18,22 @@
 </head>
 <body>
   <div>
-  <Button id="longitude" onclick="Longitude()">Longitude</Button>
-  <Button id="latitude"  onclick="Latitude()">Latitude</Button>
-  <Button id="send" onclick="moveMapToSF(map)">Go!</Button>
+  <Button class="top" id="longitude" onclick="Longitude()">Longitude</Button>
+  <Button class="top" id="latitude"  onclick="Latitude()">Latitude</Button>
+  <Button class="top" id="send" onclick="moveMapToSF(map)">Go!</Button>
   <div id="map" style="width: 100%; height: 400px; background: grey" />
   </div>
-  <Button id="Brasilia" onclick="moveMapToBrazil(map)">Brasilia</Button>
-  <Button id="Dublin" onclick="moveMapToBerlin(map)">Berlin</Button>
-  <Button id="Beijing" onclick="moveMapToBeijing(map)">Beijing</Button>
-  <Button id="London" onclick="moveMapToLondon(map)">London</Button>
-  <Button id="New Delhi" onclick="moveMapToNewDelhi(map)">New Delhi</Button>
-  <Button id="New York" onclick="moveMapToNewYork(map)">New York</Button>
-  <Button id="Paris" onclick="moveMapToParis(map)">Paris</Button>
-  <Button id="San Fransisco" onclick="moveMapToSF(map)">San Fransisco</Button>
-  <Button id="Santa Clara" onclick="moveMapToSantaClara(map)">Santa Clara</Button>
-  <Button id="Tokyo" onClick="moveMapToTokyo(map)">Tokyo</Button>
+  <Button class="towns" id="Brasilia" onclick="moveMapToBrazil(map)">Brasilia</Button>
+  <Button class="towns" id="Cape Town" onclick="moveMapToCapeTown(map)">Cape Town</Button>
+  <Button class="towns" id="Dublin" onclick="moveMapToBerlin(map)">Berlin</Button>
+  <Button class="towns" id="Beijing" onclick="moveMapToBeijing(map)">Beijing</Button>
+  <Button class="towns" id="London" onclick="moveMapToLondon(map)">London</Button>
+  <Button class="towns" id="New Delhi" onclick="moveMapToNewDelhi(map)">New Delhi</Button>
+  <Button class="towns" id="New York" onclick="moveMapToNewYork(map)">New York</Button>
+  <Button class="towns" id="Paris" onclick="moveMapToParis(map)">Paris</Button>
+  <Button class="towns" id="San Fransisco" onclick="moveMapToSF(map)">San Fransisco</Button>
+  <Button class="towns" id="Santa Clara" onclick="moveMapToSantaClara(map)">Santa Clara</Button>
+  <Button class="towns" id="Tokyo" onClick="moveMapToTokyo(map)">Tokyo</Button>
   <script  type="text/javascript" charset="UTF-8" >
 
  var x, y; 
@@ -83,6 +92,10 @@ function moveMapToBrazil(map){
   map.setZoom(10);
   map.setCenter({lat:-15.8267,lng:-47.9218})
 }
+function moveMapToCapeTown(map){
+  map.setZoom(10);
+  map.setCenter({lat:-33.9249,lng:18.4241})
+}
 
 function send(map){
   alert(x); 
@@ -120,7 +133,7 @@ map.addEventListener('mousedown', function (evt) {
     moveMapToBerlin(map); 
   });
 
-moveMapToBerlin(map);
+moveMapToSantaClara(map);
 
   </script>
 </body>
