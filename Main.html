@@ -17,7 +17,9 @@
 
     // Obtain the default map types from the platform object
     var maptypes = platform.createDefaultLayers();
-    group = new H.map.Group();
+
+    var group = new H.map.Group();
+
     var map = new H.Map(
     document.getElementById('mapContainer'),
     maptypes.normal.map,
@@ -35,6 +37,7 @@ marker = new H.map.Marker(map.getCenter());
 // Add the marker to the group (which causes 
 // it to be displayed on the map)
 group.addObject(marker);
+platform.addObject(map); 
   </script>
   </body>
 </html>
