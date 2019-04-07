@@ -7,8 +7,16 @@
   type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
+    <button type="button"></button>
+    <button type="button"></button>
   <div style="width: 640px; height: 480px" id="mapContainer"></div>
   <script>
+
+function moveMapToSF(map){
+  map.setCenter({lat:122.4194, lng:37.7749});
+  map.setZoom(14);
+}
+
     // Instantiate a map and platform object:
 var platform = new H.service.Platform({
     "app_id":"iyo4JfGPiGiUwO7Jwkei",
@@ -93,6 +101,8 @@ var onResult = function(result) {
   }
 };
 
+map.setZoom(true); 
+
 // Get an instance of the routing service:
 var router = platform.getRoutingService();
 
@@ -103,6 +113,8 @@ router.calculateRoute(routingParameters, onResult,
   function(error) {
     alert(error.message);
   });
+
+  map.moveToSF()
 
   </script>
   </body>
