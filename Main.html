@@ -7,8 +7,17 @@
   type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
+<<<<<<< HEAD
     <button type="button"></button>
     <button type="button"></button>
+=======
+      <button onclick="Destination()">Destination</button>
+      <button onclick="Longitude()">Longitude</button>
+      <button onclick="Latitude()">Latitude</button>
+      <p id="demo"></p>
+
+
+>>>>>>> b43866b45c4c4054d4ca88315ebc78b6f61636e6
   <div style="width: 640px; height: 480px" id="mapContainer"></div>
   <script>
 
@@ -36,7 +45,33 @@ var map = new H.Map(
   zoom: 10,
   center: { lat: 52.51, lng: 13.4 }
   });
+////////////////////////////////////////////////
+// connects to button
 
+function Destination() {
+  var destination = prompt("Please enter desired destination", "Cupertino");
+  if (destination != null){
+    document.getElementByID("demo").innerHTML =
+    "Hello " + person + "! How are you today?";
+  }
+}
+function Longitude() {
+var longitude = prompt("longitude", "20.0");
+  if (longitude != null){
+    document.getElementByID("demo").innerHTML = 
+    "Hello " + person + "! How are you today?";
+  }
+}
+
+function Latitude() {
+var latitude = prompt("latitude", "35.8");
+  if (latitude != null){
+    document.getElementByID("demo").innerHTML = 
+    "Hello " + person + "! How are you today?";
+  }
+}
+
+///////////////////////////////////////////////////////////
 // Create the parameters for the routing request:
 var routingParameters = {
   // The routing mode:
