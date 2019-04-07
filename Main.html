@@ -1,203 +1,131 @@
 <html>
-  <head>
-  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-  <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"
-  type="text/javascript" charset="utf-8"></script>
-  <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
-  type="text/javascript" charset="utf-8"></script>
-  <style>
-  .helpme{
-    display:inline-block; 
+<head>
+<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893" />
+<style>
+  .towns{
+    margin-top:20px;
   }
-  #Statsiframe{
-    background-color: blue;
+  .top{
+    margin-bottom: 20px;
   }
+</style>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
 
-  </style>
-  </head>
-  <body>
+</head>
+<body>
+  <div>
+  <Button class="top" id="latitude"  onclick="Latitude()">Latitude</Button>
+  <Button class="top" id="longitude" onclick="Longitude()">Longitude</Button>
+  <Button class="top" id="send" onclick="send(map)">Go!</Button>
+  <div id="map" style="width: 100%; height: 400px; background: grey" />
+  </div>
+  <Button class="towns" id="Brasilia" onclick="moveMapToBrazil(map)">Brasilia</Button>
+  <Button class="towns" id="Cape Town" onclick="moveMapToCapeTown(map)">Cape Town</Button>
+  <Button class="towns" id="Dublin" onclick="moveMapToBerlin(map)">Berlin</Button>
+  <Button class="towns" id="Beijing" onclick="moveMapToBeijing(map)">Beijing</Button>
+  <Button class="towns" id="London" onclick="moveMapToLondon(map)">London</Button>
+  <Button class="towns" id="New Delhi" onclick="moveMapToNewDelhi(map)">New Delhi</Button>
+  <Button class="towns" id="New York" onclick="moveMapToNewYork(map)">New York</Button>
+  <Button class="towns" id="Paris" onclick="moveMapToParis(map)">Paris</Button>
+  <Button class="towns" id="San Fransisco" onclick="moveMapToSF(map)">San Fransisco</Button>
+  <Button class="towns" id="Santa Clara" onclick="moveMapToSantaClara(map)">Santa Clara</Button>
+  <Button class="towns" id="Tokyo" onclick="moveMapToTokyo(map)">Tokyo</Button>
+  <script  type="text/javascript" charset="UTF-8" >
 
-    <button type="button"></button>
-    <button type="button"></button>
+ var x, y; 
 
-      <button onclick="Destination()">Destination</button>
-      <button id="longitudeD" onclick="LongitudeD()">Longitude</button>
-      <button id="latitudeD" onclick="LatitudeD()">Latitude</button>
-      <button onclick="CurrentLocation()">CurrentLocation</button>
-      <button id="longitudeC" onclick="LongitudeC()">LongitudeC</button>
-      <button id="latitudeC" onclick="LatitudeC()">LatitudeC</button>
-      
-      <div>
-        <div class = "helpme" style="width: 640px; height: 480px" id="mapContainer"></div>
-        <iframe class = "helpme" id="Statsiframe" style="width: 200px; height: 480px" onload="statsiframe()" src="Statsiframe.html"></iframe>
-      </div> 
-  <script>
+function Latitude(){
+  x = prompt("Input your longitude");
+    }
+function Longitude(){
+  y = prompt("Input your latitude");
+}
+
+function moveMapToBerlin(map){
+  map.setCenter({lat:52.5159, lng:13.3777});
+  map.setZoom(10);
+}
 
 function moveMapToSF(map){
-  map.setCenter({lat:122.4194, lng:37.7749});
+  map.setZoom(12);
+  map.setCenter({lat: 37.773972, lng:-122.431297});
+}
+
+function moveMapToTokyo(map){
+  map.setZoom(10);
+  map.setCenter({lat: 35.6762, lng:139.6503}); 
+}
+
+function moveMapToBeijing(map){
+  map.setZoom(10);
+  map.setCenter({lat: 39.913818, lng:116.363625}); 
+}
+
+function moveMapToSantaClara(map){
   map.setZoom(14);
+  map.setCenter({lat: 37.3541,lng:-121.9552}); 
 }
 
-    // Instantiate a map and platform object:
+function moveMapToNewYork(map){
+  map.setZoom(10);
+  map.setCenter({lat:40.730610,lng:-73.935242})
+}
+function moveMapToLondon(map){
+  map.setZoom(10);
+  map.setCenter({lat:51.5074,lng:-0.1278})
+}
+function moveMapToNewDelhi(map){
+  map.setZoom(10);
+  map.setCenter({lat:28.644800,lng:77.2090})
+}
+function moveMapToParis(map){
+  map.setZoom(10);
+  map.setCenter({lat:48.8566,lng:2.3522})
+}
+function moveMapToBrazil(map){
+  map.setZoom(10);
+  map.setCenter({lat:-15.8267,lng:-47.9218})
+}
+function moveMapToCapeTown(map){
+  map.setZoom(10);
+  map.setCenter({lat:-33.9249,lng:18.4241})
+}
+
+function send(map){
+  map.setZoom(10);
+  map.setCenter({lat: x, lng: y}); 
+}
+
 var platform = new H.service.Platform({
-    "app_id":"iyo4JfGPiGiUwO7Jwkei",
-    "app_code":"pmt_9cbTvp15TTYMhDOB-w"
+  app_id: 'devportal-demo-20180625',
+  app_code: '9v2BkviRwi9Ot26kp2IysQ',
+  useHTTPS: true
 });
-// Retrieve the target element for the map:
-var targetElement = document.getElementById('mapContainer');
 
-// Get the default map types from the platform object:
-var defaultLayers = platform.createDefaultLayers();
+var pixelRatio = window.devicePixelRatio || 1;
+var defaultLayers = platform.createDefaultLayers({
+  tileSize: pixelRatio === 1 ? 256 : 512,
+  ppi: pixelRatio === 1 ? undefined : 320
+});
 
-// Instantiate the map:
-var map = new H.Map(
-  document.getElementById('mapContainer'),
-  defaultLayers.normal.map,
-  {
-  zoom: 10,
-  center: { lat: 52.51, lng: 13.4 }
-  });
-////////////////////////////////////////////////
-// connects to button
+//Step 2: initialize a map  - not specificing a location will give a whole world view.
+var map = new H.Map(document.getElementById('map'),
+  defaultLayers.normal.map, {pixelRatio: pixelRatio});
 
-function Destination() {
-  var destination = prompt("Please enter desired destination", "Cupertino");
-}
-function LongitudeD() {
-var lon2 = prompt("destination longitude", "20.0");
-document.getElementById("longitudeD").setAttribute("isCLicked",true); 
-}
+//Step 3: make the map interactive
+// MapEvents enables the event system
+// Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
-function LatitudeD() {
-var lat2 = prompt("destination latitude", "35.8");
-document.getElementById("latitudeD").setAttribute("isCLicked",true); 
-}
-function LongitudeC() {
-var lon1 = prompt("current longitude", "35.8");
-document.getElementById("longitudeC").setAttribute("isCLicked",true); 
-}
-function LatitudeC() {
-var lat1 = prompt("current latitude", "35.8");
-document.getElementById("latitudeC").setAttribute("isCLicked",true); 
-}
+// Create the default UI components
+var ui = H.ui.UI.createDefault(map, defaultLayers);
 
-///////////////////////////////////////////////////////////
-function distance(lat1, lon1, lat2, lon2, unit) {
-	if ((lat1 == lat2) && (lon1 == lon2)) {
-		return 0;
-	}
-	else {
-		var radlat1 = Math.PI * lat1/180;
-		var radlat2 = Math.PI * lat2/180;
-		var theta = lon1-lon2;
-		var radtheta = Math.PI * theta/180;
-		var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-		if (dist > 1) {
-			dist = 1;
-		}
-		dist = Math.acos(dist);
-		dist = dist * 180/Math.PI;
-		dist = dist * 60 * 1.1515;
-		if (unit=="K") { dist = dist * 1.609344 }
-    if (unit=="N") { dist = dist * 0.8684 }
-    return dist;
-	}
-}
-///////////////////////////////////////////////////////////
-// Create the parameters for the routing request:
-var routingParameters = {
-  // The routing mode:
-  'mode': 'fastest;car',
-  // The start point of the route:
-  'waypoint0': 'geo!50.1120423728813,8.68340740740811',
-  // The end point of the route:
-  'waypoint1': 'geo!52.5309916298853,13.3846220493377',
-  // To retrieve the shape of the route we choose the route
-  // representation mode 'display'
-  'representation': 'display'
-};
-
-// Define a callback function to process the routing response:
-var onResult = function(result) {
-  var route,
-    routeShape,
-    startPoint,
-    endPoint,
-    linestring;
-  if(result.response.route) {
-  // Pick the first route from the response:
-  route = result.response.route[0];
-  // Pick the route's shape:
-  routeShape = route.shape;
-
-  // Create a linestring to use as a point source for the route line
-  linestring = new H.geo.LineString();
-
-  // Push all the points in the shape into the linestring:
-  routeShape.forEach(function(point) {
-    var parts = point.split(',');
-    linestring.pushLatLngAlt(parts[0], parts[1]);
-  });
-
-  // Retrieve the mapped positions of the requested waypoints:
-  startPoint = route.waypoint[0].mappedPosition;
-  endPoint = route.waypoint[1].mappedPosition;
-
-  // Create a polyline to display the route:
-  var routeLine = new H.map.Polyline(linestring, {
-    style: { strokeColor: 'blue', lineWidth: 10 }
-  });
-
-  // Create a marker for the start point:
-  var startMarker = new H.map.Marker({
-    lat: startPoint.latitude,
-    lng: startPoint.longitude
-  });
-
-  // Create a marker for the end point:
-  var endMarker = new H.map.Marker({
-    lat: endPoint.latitude,
-    lng: endPoint.longitude
-  });
-
-  // Add the route polyline and the two markers to the map:
-  map.addObjects([routeLine, startMarker, endMarker]);
-
-  // Set the map's viewport to make the whole route visible:
-  map.setViewBounds(routeLine.getBounds());
-  }
-};
-
-map.setZoom(true); 
-
-// Get an instance of the routing service:
-var router = platform.getRoutingService();
-
-// Call calculateRoute() with the routing parameters,
-// the callback and an error callback function (called if a
-// communication error occurs):
-router.calculateRoute(routingParameters, onResult,
-  function(error) {
-    alert(error.message);
-  });
-
-//  map.moveToSF()
+moveMapToSantaClara(map);
 
   </script>
-
-<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCNqCgkvZr6rGMkUvXDIwhu6ezY9lC8GuQ",
-    authDomain: "bike-hailing-app.firebaseapp.com",
-    databaseURL: "https://bike-hailing-app.firebaseio.com",
-    projectId: "bike-hailing-app",
-    storageBucket: "bike-hailing-app.appspot.com",
-    messagingSenderId: "717536999498"
-  };
-  firebase.initializeApp(config);
-</script>
-
-  </body>
+</body>
 </html>
