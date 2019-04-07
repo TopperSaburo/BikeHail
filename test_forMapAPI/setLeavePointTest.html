@@ -25,17 +25,21 @@
                     return true;
                 }
             }
-            let setLeavePoint = async () =>{
+            let setLeavePoint =  () =>{
                 let setbtn = document.createElement("button");
                 //setbtn.
                 let leavepoint;
                 navigator.geolocation.getCurrentPosition(position=>{leavepoint=[position.coords.latitude,position.coords.longitude]}, onError);
                 while(true){
-                    
+                    if(brabbing){
+
+                    }
                     if(checkClicked(setbtn))break;
                 }
                 return leavepoint;
             }
+            //let pos = setLeavePoint()
+            //pos[0] :it is latitude
             //navigator.geolocation.getCurrentPosition(onSuccess, onError);    
         </script>
 
