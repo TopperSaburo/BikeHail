@@ -34,13 +34,8 @@ function moveMapToBerlin(map){
 function send(map){
   alert(x); 
   alert(y);
-  alert(typeof x);
-  alert(typeof y);
-  x = parseInt(x); 
-  y = parseInt(y);
-  alert(typeof x); 
-  alert(typeof y); 
-  map.setCenter({lat: x, lng: y});
+  var geoPoint = new H.geo.Point(x, zz);
+  map.setCenter(new H.geo.lat({lat: x}, {lng: y})); 
   map.setZoom(10);
 }
 
@@ -49,11 +44,15 @@ function send(map){
  */
 
 //Step 1: initialize communication with the platform
+
+var container = new H.map.Group(); 
+
 var platform = new H.service.Platform({
   app_id: 'devportal-demo-20180625',
   app_code: '9v2BkviRwi9Ot26kp2IysQ',
   useHTTPS: true
 });
+
 var pixelRatio = window.devicePixelRatio || 1;
 var defaultLayers = platform.createDefaultLayers({
   tileSize: pixelRatio === 1 ? 256 : 512,
@@ -71,6 +70,16 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
 // Create the default UI components
 var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+container.addEventListener('mousedown', function (evt) {
+    // Now lets log the event
+    customLog(evt.target.getData());
+  });
+  // Let's zoom to our objects by default
+  map.setViewBounds(container.getBounds());
+  // Make objects visible by adding them to the map
+  map.addObject(container);
+}
 
 // Now use the map as required...
 moveMapToBerlin(map);
