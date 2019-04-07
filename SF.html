@@ -9,22 +9,40 @@
 
 </head>
 <body>
+  <Button id="longitude" onclick="Longitude()">Longitude</Button>
+  <Button id="latitude"  onclick="Latitude()">Latitude</Button>
+  <Button id="send" onclick="send()">Go!</Button>
   <div id="map" style="width: 100%; height: 400px; background: grey" />
   <script  type="text/javascript" charset="UTF-8" >
-    
-/**
- * Moves the map to display over Berlin
- *
- * @param  {H.Map} map      A HERE Map instance within the application
- */
-function moveMapToSF(map){
-  map.setCenter({lat:37.7749, lng:122.4194});
-  map.setZoom(14);
+
+ var x, y; 
+
+function Longitude(){
+  x = prompt("Input your longitude");
+  alert(x); 
+    }
+function Latitude(){
+  y = prompt("Input your latitude");
+  alert(y);
 }
 
+function moveMapToBerlin(map){
+  map.setCenter({lat:52.5159, lng:13.3777});
+  map.setZoom(10);
+}
 
-
-
+function send(map){
+  alert(x); 
+  alert(y);
+  alert(typeof x);
+  alert(typeof y);
+  x = parseInt(x); 
+  y = parseInt(y);
+  alert(typeof x); 
+  alert(typeof y); 
+  map.setCenter({lat: x, lng: y});
+  map.setZoom(10);
+}
 
 /**
  * Boilerplate map initialization code starts below:
@@ -55,7 +73,8 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 var ui = H.ui.UI.createDefault(map, defaultLayers);
 
 // Now use the map as required...
-moveMapToSF(map);
+moveMapToBerlin(map);
+
   </script>
 </body>
 </html>
