@@ -18,10 +18,22 @@
         </head>
         <body>
         <script>
-            let setLeavePoint = () =>{
+            
+            let checkClicked = (buttonElement) =>{
+                
+                buttonElement.onclick = () =>{
+                    return true;
+                }
+            }
+            let setLeavePoint = async () =>{
+                let setbtn = document.createElement("button");
+                //setbtn.
                 let leavepoint;
                 navigator.geolocation.getCurrentPosition(position=>{leavepoint=[position.coords.latitude,position.coords.longitude]}, onError);
-                
+                while(true){
+                    
+                    if(checkClicked(setbtn))break;
+                }
                 return leavepoint;
             }
             //navigator.geolocation.getCurrentPosition(onSuccess, onError);    
