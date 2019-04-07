@@ -7,9 +7,9 @@
   type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-// creates button for user to input destination
-      <button onclick="myFunction()">Destination</button>
-
+      <button onclick="Destination()">Destination</button>
+      <button onclick="Longitude()">Longitude</button>
+      <button onclick="Latitude()">Latitude</button>
       <p id="demo"></p>
 
 
@@ -37,14 +37,28 @@ var map = new H.Map(
 ////////////////////////////////////////////////
 // connects to button
 
-function myFunction() {
+function Destination() {
   var destination = prompt("Please enter desired destination", "Cupertino");
   if (destination != null){
     document.getElementByID("demo").innerHTML =
     "Hello " + person + "! How are you today?";
   }
 }
+function Longitude() {
+var longitude = prompt("longitude", "20.0");
+  if (longitude != null){
+    document.getElementByID("demo").innerHTML = 
+    "Hello " + person + "! How are you today?";
+  }
+}
 
+function Latitude() {
+var latitude = prompt("latitude", "35.8");
+  if (latitude != null){
+    document.getElementByID("demo").innerHTML = 
+    "Hello " + person + "! How are you today?";
+  }
+}
 
 ///////////////////////////////////////////////////////////
 // Create the parameters for the routing request:
