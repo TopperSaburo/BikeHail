@@ -1,0 +1,33 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script src="https://bike-hailing-app.firebaseio.com"></script>
+        <script>
+        // Initialize Firebase
+        var config = {
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+    /////////////////    
+        
+    function addLead() {
+    var clientName = document.getElementById('name').value;
+    var clientMobile = document.getElementById('mobile').value;
+    var clientEmail = document.getElementById('email').value;
+
+    var newClientKey = database.ref().child('leads').push().key;
+    database.ref('leads/'+newClientKey+'/name').set(clientName);
+    database.ref('leads/'+newClientKey+'/mobile').set(clientMobile);
+    database.ref('leads/'+newClientKey+'/email').set(clientEmail);
+}
+
+database.child().child();
+
+            </script>
+
+    </body>
+
+
+</html>
