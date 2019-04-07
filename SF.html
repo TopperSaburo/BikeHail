@@ -18,9 +18,9 @@
 </head>
 <body>
   <div>
-  <Button class="top" id="longitude" onclick="Longitude()">Longitude</Button>
   <Button class="top" id="latitude"  onclick="Latitude()">Latitude</Button>
-  <Button class="top" id="send" onclick="moveMapToSF(map)">Go!</Button>
+  <Button class="top" id="longitude" onclick="Longitude()">Longitude</Button>
+  <Button class="top" id="send" onclick="send(map)">Go!</Button>
   <div id="map" style="width: 100%; height: 400px; background: grey" />
   </div>
   <Button class="towns" id="Brasilia" onclick="moveMapToBrazil(map)">Brasilia</Button>
@@ -38,13 +38,11 @@
 
  var x, y; 
 
-function Longitude(){
-  x = prompt("Input your longitude");
-  alert(x); 
-    }
 function Latitude(){
+  x = prompt("Input your longitude");
+    }
+function Longitude(){
   y = prompt("Input your latitude");
-  alert(y);
 }
 
 function moveMapToBerlin(map){
@@ -98,11 +96,8 @@ function moveMapToCapeTown(map){
 }
 
 function send(map){
-  alert(x); 
-  alert(y);
-  var geoPoint = new H.geo.Point(x, zz);
-  map.setCenter(new H.geo.lat({lat: x}, {lng: y})); 
   map.setZoom(10);
+  map.setCenter({lat: x, lng: y}); 
 }
 
 var platform = new H.service.Platform({
