@@ -3,10 +3,28 @@
 
     </head>
     <body>
-            alert("latitude");
-            alert(lat2);
+        <script>
+    function getParamValue(paramName){
+    var url = window.location.search.substring(1); //get rid of "?" in querystring
+    var qArray = url.split('&'); //get key-value pairs
+    for (var i = 0; i < qArray.length; i++) 
+    {
+        var pArr = qArray[i].split('='); //split key and value
+        if (pArr[0] == paramName) 
+            return pArr[1]; //return value
+    }
+}
+            var lon1 = getParamValue('lon1');
+            var lat1 = getParamValue('lat1');
+            var lon2 = getParamValue('lon2');
+            var lat2 = getParamValue('lat2');
+            alert(lon1);
             alert(lat1);
             alert(lon2);
-            alert(lon1);
+            alert(lat2);
+            if(lat2.isClicked == true){
+                window.alert(dist);
+            }
+            </script>
     </body>
 </html>
