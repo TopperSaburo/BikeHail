@@ -33,7 +33,7 @@
                 //coords = {lat: 52.53075, lng: 13.3851}
                 //let leavepoint;
                 navigator.geolocation.getCurrentPosition(position=>{coords = {lat:position.coords.latitude, lng: position.coords.longitude}}, onError);
-                let pointMark = new H.map.Marker({lat: leavepoint[0], lng: leavepoint[1]}, {icon: new H.map.Icon(svgMarkup)});
+                let pointMark = new H.map.Marker(coords, {icon: new H.map.Icon(svgMarkup)});
                 map.addObject(pointMark);
                 map.setCenter(coords);
                 while(true){
