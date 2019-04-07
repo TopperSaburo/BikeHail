@@ -11,7 +11,7 @@
                 storageBucket: "bike-hailing-app.appspot.com",
                 messagingSenderId: "717536999498"
             };
-            firebase.initializeApp(config);
+            let db = firebase.initializeApp(config);
             </script>
             <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
             <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
@@ -25,15 +25,28 @@
             var uiConfig = {
                 callbacks: {
                     signInSuccess: function(currentUser, credential, redirectUrl) {
-                    // サインイン成功時のコールバック関数
-                    // 戻り値で自動的にリダイレクトするかどうかを指定
-                    alert(`${currentUser}, ${credential}, ${redirectUrl}`);
-                    return true;
+                        // サインイン成功時のコールバック関数
+                        // 戻り値で自動的にリダイレクトするかどうかを指定
+                        alert(`${currentUser}, ${credential}, ${redirectUrl}`);
+                        
+                        db.collection("users").add({
+                            first: "Ada",
+                            last: "Lovelace",
+                            born: 1815
+                        })
+                        .then(function(docRef) {
+                            console.log("Document written with ID: ", docRef.id);
+                        })
+                        .catch(function(error) {
+                            console.error("Error adding document: ", error);
+                        });
+
+                        return true;
                     },
                     uiShown: function() {
                     // FirebaseUIウィジェット描画完了時のコールバック関数
                     // 読込中で表示しているローダー要素を消す
-                    document.getElementById('loader').style.display = 'none';
+                        document.getElementById('loader').style.display = 'none';
                     }
                 },
                 // リダイレクトではなく、ポップアップでサインインフローを表示
@@ -47,6 +60,7 @@
                 tosUrl: '<your-tos-url>'
             };
             ui.start('#firebaseui-auth-container', uiConfig);
+            
             </script>
     </body>
 </html>
