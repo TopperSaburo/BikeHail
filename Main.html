@@ -5,6 +5,11 @@
   type="text/javascript" charset="utf-8"></script>
   <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
   type="text/javascript" charset="utf-8"></script>
+  <style>
+  .helpme{
+    display:inline-block; 
+  }
+  </style>
   </head>
   <body>
 
@@ -18,10 +23,10 @@
       <button id="longitudeC" onclick="LongitudeC()">LongitudeC</button>
       <button id="latitudeC" onclick="LatitudeC()">LatitudeC</button>
       
-
-
-
-  <div style="width: 640px; height: 480px" id="mapContainer"></div>
+      <div>
+        <div class = "helpme" style="width: 640px; height: 480px" id="mapContainer"></div>
+        <iframe class = "helpme" id="Statsiframe" style="width: 200px; height: 480px" onload="statsiframe()" src="Statsiframe.html"></iframe>
+      </div> 
   <script>
 
 function moveMapToSF(map){
@@ -62,20 +67,19 @@ document.getElementById("longitudeD").setAttribute("isCLicked",true);
 function LatitudeD() {
 var lat2 = prompt("destination latitude", "35.8");
 document.getElementById("latitudeD").setAttribute("isCLicked",true); 
-alert(lat2);
 }
 function LongitudeC() {
 var lon1 = prompt("current longitude", "35.8");
 document.getElementById("longitudeC").setAttribute("isCLicked",true); 
-console.log(lon1);
 }
 function LatitudeC() {
 var lat1 = prompt("current latitude", "35.8");
 document.getElementById("latitudeC").setAttribute("isCLicked",true); 
 }
-if(document.getElementById("latitudeC").getAttribute("isClicked")){
-  distance;
-}
+
+function statsiframe(){
+document.getElementById("Statsiframe").getAttribute(lon1); 
+} 
 ///////////////////////////////////////////////////////////
 function distance(lat1, lon1, lat2, lon2, unit) {
 	if ((lat1 == lat2) && (lon1 == lon2)) {
