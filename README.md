@@ -1,4 +1,4 @@
-# BikeHailingApp
+#                                                        BikeHailingApp
 ## Inspiration
 Traveling is often made easy with cars, motorcycles, and even bicycles! To get from point A to B, we realized that we needed an efficient application to coordinate drivers with riders. So we set out to create BikeHail which is an easy app that finds closest driver matches with customer requests! We found that we could easily launch this product in foreign markets such as Europe and India where biking is quite common. This app has a wide customer range because no drivers license is needed for bikers!
 ## What it does
